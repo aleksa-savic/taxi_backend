@@ -1,23 +1,25 @@
 // Update with your config settings.
+const { knexSnakeCaseMappers } = require("objection");
 
 module.exports = {
-  test: {
-    client: "pg",
-    connection: process.env.DB_connection,
-    migrations: {
-      directory: __dirname + "/db/migrations",
-    },
-    seeds: {
-      directory: __dirname + "/db/seeds/test",
-    },
-  },
   development: {
-    client: "pg",
-    connection: process.env.DB_connection,
+    client: "postgresql",
+    connection: {
+      database: "ultraTaxi",
+      user: "postgres",
+      password: "postgres",
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: "knex_migrations",
+    },
   },
 
   staging: {
-    client: "pg",
+    client: "postgres",
     connection: {
       database: "ultraTaxi",
       user: "postgres",
@@ -46,5 +48,6 @@ module.exports = {
     migrations: {
       tableName: "knex_migrations",
     },
+    ...knexSnakeCaseMappers,
   },
 };

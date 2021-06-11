@@ -14,7 +14,6 @@ router.get("/users/:id", (req, res) => {
   let id = parseInt(req.params.id);
   User.query()
     .where("id", id)
-    .eager("messages")
     .then((user) => {
       res.json(user);
     });
