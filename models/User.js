@@ -1,4 +1,16 @@
 const { Model } = require("objection");
+const knex = require("../db/knex");
+const database = knex({
+  client: "pg",
+  connection: {
+    host: "0.0.0.0",
+    user: "postgres",
+    password: "postgres",
+    database: "ultraTaxi",
+  },
+});
+
+Model.knex(knex);
 
 class User extends Model {
   static get tableName() {

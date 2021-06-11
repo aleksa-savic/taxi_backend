@@ -1,7 +1,16 @@
 // Update with your config settings.
-const dotenv = require("dotenv");
 
 module.exports = {
+  test: {
+    client: "pg",
+    connection: process.env.DB_connection,
+    migrations: {
+      directory: __dirname + "/db/migrations",
+    },
+    seeds: {
+      directory: __dirname + "/db/seeds/test",
+    },
+  },
   development: {
     client: "pg",
     connection: process.env.DB_connection,
