@@ -11,3 +11,4 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema.dropTable("users");
 };
+//probably wotn do migrations since i have a create script
